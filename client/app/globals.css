@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #f5f7ff;
+  --ink-muted: #b7c0d1;
+  --paper: #05080f;
+  --panel: rgba(7, 11, 20, 0.7);
+  --stroke: rgba(108, 125, 158, 0.25);
+  --glow-cyan: rgba(57, 182, 255, 0.45);
+  --glow-mint: rgba(89, 255, 169, 0.35);
+  --glow-amber: rgba(255, 184, 77, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(1200px circle at 10% 10%, rgba(57, 182, 255, 0.12), transparent 60%),
+    radial-gradient(900px circle at 90% 20%, rgba(89, 255, 169, 0.1), transparent 55%),
+    radial-gradient(700px circle at 70% 90%, rgba(255, 184, 77, 0.08), transparent 60%),
+    var(--paper);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.28);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Selection */
+::selection {
+  background: rgba(57, 182, 255, 0.35);
+  color: #f5f7ff;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(120deg, #ffffff 0%, #7ed3ff 45%, #4dffb5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(108, 125, 158, 0.2);
+}
+
+/* Background helpers */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-radial-glow {
+  background: radial-gradient(600px circle at 50% 0%, rgba(57, 182, 255, 0.18), transparent 60%);
+}
+
+/* Code editor styling */
+.monaco-editor {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Button hover glow */
+.btn-glow {
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 30px rgba(57, 182, 255, 0.35);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
